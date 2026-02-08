@@ -1,12 +1,13 @@
 package controller;
 
+import interfaces.IVentaModelo;
 import model.VentaModelo;
 
 import javax.swing.*;
 
 public class VentaControlador {
-    private final VentaModelo ventaModelo;
-    public VentaControlador(VentaModelo ventaModelo) {
+    private final IVentaModelo ventaModelo;
+    public VentaControlador(IVentaModelo ventaModelo) {
         this.ventaModelo = ventaModelo;
     }
 
@@ -15,7 +16,7 @@ public class VentaControlador {
             if(nombre.isEmpty()) throw new Exception("El nombre es obligatorio");
             int cantidad = Integer.parseInt(cantidadStr);
             int precio = Integer.parseInt(precioStr);
-            if(cantidad < 0) throw new Exception("El cantidad debe ser mayor a cero");
+            if(cantidad < 0) throw new Exception("La cantidad debe ser mayor a cero");
             if(precio < 0) throw new Exception("El precio debe ser mayor a cero");
 
             ventaModelo.agregarProducto(nombre, cantidad, precio);
