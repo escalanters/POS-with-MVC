@@ -12,40 +12,31 @@ public class VentaControlador {
     }
 
     public boolean agregarProducto(String nombre, String cantidadStr, String precioStr) throws Exception {
-        try{
-            if(nombre.isEmpty()) throw new Exception("El nombre es obligatorio");
-            int cantidad = Integer.parseInt(cantidadStr);
-            int precio = Integer.parseInt(precioStr);
-            if(cantidad < 0) throw new Exception("La cantidad debe ser mayor a cero");
-            if(precio < 0) throw new Exception("El precio debe ser mayor a cero");
+        if(nombre.trim().isEmpty()) throw new Exception("El nombre es obligatorio");
 
+        try {
+            int cantidad = Integer.parseInt(cantidadStr);
+            double precio = Double.parseDouble(precioStr);
             ventaModelo.agregarProducto(nombre, cantidad, precio);
             return true;
-        }catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new Exception("La cantidad y el precio deben ser numeros validos");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }
-        return false;
-    }
-
-    public void quitarProducto(int indiceSeleccionado){
-        if(indiceSeleccionado >= 0){
-            ventaModelo.quitarProducto(indiceSeleccionado);
-        }else{
-            JOptionPane.showMessageDialog(null, "Seleccione un producto de la tabla para quitarlo");
         }
     }
 
-    public void finalizarVenta(String pagoString){
-        try{
+    public void quitarProducto(int indiceSeleccionado) throws Exception {
+        if(indiceSeleccionado < 0) {
+            throw new Exception("Seleccione un producto de la tabla para quitarlo");
+        }
+        ventaModelo.quitarProducto(indiceSeleccionado);
+    }
+
+    public void finalizarVenta(String pagoString) throws Exception {
+        try {
             double pago = Double.parseDouble(pagoString);
             ventaModelo.finalizarVenta(pago);
-            JOptionPane.showMessageDialog(null, "Venta finalizada con exito");
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Favor de ingresar una cantidad valida");
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "No se pudo finalizar la compra");
+            throw new Exception("El monto de pago debe ser un número válido");
         }
     }
 

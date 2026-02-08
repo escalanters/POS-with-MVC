@@ -172,20 +172,25 @@ public class VentaVista extends JFrame implements IObservador{
         });
 
         btnQuitar.addActionListener(e -> {
-            int row = tablaProductos.getSelectedRow();
-            if(row >= 0) {
+            try {
+                int row = tablaProductos.getSelectedRow();
                 controlador.quitarProducto(row);
-            } else {
-                JOptionPane.showMessageDialog(this, "Seleccione un producto para quitar");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
             }
         });
 
         btnFinalizar.addActionListener(e -> {
-            if(txtPago.getText().isEmpty()){
-                JOptionPane.showMessageDialog(this, "Ingrese el monto de pago");
-                return;
+            try {
+                if(txtPago.getText().isEmpty()){
+                    throw new Exception("Ingrese el monto de pago");
+                }
+                controlador.finalizarVenta(txtPago.getText());
+                JOptionPane.showMessageDialog(this, "Venta finalizada con exito");
+                txtPago.setText("");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
             }
-            controlador.finalizarVenta(txtPago.getText());
         });
     }
 
