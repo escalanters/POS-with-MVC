@@ -1,10 +1,12 @@
 package styles;
-
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
+/**
+ * The type Button.
+ */
 public class Button extends JButton {
     private boolean hovered = false;
     private int cornerRadius;
@@ -14,6 +16,18 @@ public class Button extends JButton {
     private Color colorBtn;
     private Color colorHover;
 
+    /**
+     * Instantiates a new Button.
+     *
+     * @param text         the text
+     * @param width        the width
+     * @param height       the height
+     * @param fontSize     the font size
+     * @param cornerRadius the corner radius
+     * @param colorText    the color text
+     * @param colorBtn     the color btn
+     * @param colorHover   the color hover
+     */
     public Button(String text, int width, int height, int fontSize, int cornerRadius, Color colorText, Color colorBtn, Color colorHover) {
         super(text);
         this.width = width;
@@ -50,7 +64,6 @@ public class Button extends JButton {
                 repaint();
             }
         });
-
     }
 
     @Override
@@ -62,7 +75,6 @@ public class Button extends JButton {
         g2d.setStroke(new BasicStroke(2));
         super.paintComponent(g);
         g2d.dispose();
-
     }
 
     @Override

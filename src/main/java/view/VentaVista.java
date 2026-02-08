@@ -1,5 +1,4 @@
 package view;
-
 import controller.VentaControlador;
 import interfaces.IObservador;
 import interfaces.IVentaLectura;
@@ -8,7 +7,6 @@ import styles.Button;
 import styles.Style;
 import styles.FontUtil;
 import styles.TxtFieldPh;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -17,8 +15,10 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * The type Venta vista.
+ */
 public class VentaVista extends JFrame implements IObservador{
-
     private TxtFieldPh txtNombre, txtCantidad, txtPrecio, txtPago;
     private JLabel lblTotal, lblCambio;
     private JTable tablaProductos;
@@ -26,6 +26,11 @@ public class VentaVista extends JFrame implements IObservador{
     private Button btnAgregar, btnQuitar, btnFinalizar;
     private final VentaControlador controlador;
 
+    /**
+     * Instantiates a new Venta vista.
+     *
+     * @param controlador the controlador
+     */
     public VentaVista(VentaControlador controlador) {
         this.controlador = controlador;
         startComponents();

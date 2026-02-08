@@ -1,16 +1,30 @@
 package controller;
-
 import interfaces.IVentaModelo;
-import model.VentaModelo;
 
-import javax.swing.*;
-
+/**
+ * The type Venta controlador.
+ */
 public class VentaControlador {
     private final IVentaModelo ventaModelo;
+
+    /**
+     * Instantiates a new Venta controlador.
+     *
+     * @param ventaModelo the venta modelo
+     */
     public VentaControlador(IVentaModelo ventaModelo) {
         this.ventaModelo = ventaModelo;
     }
 
+    /**
+     * Agregar producto boolean.
+     *
+     * @param nombre      the nombre
+     * @param cantidadStr the cantidad str
+     * @param precioStr   the precio str
+     * @return the boolean
+     * @throws Exception the exception
+     */
     public boolean agregarProducto(String nombre, String cantidadStr, String precioStr) throws Exception {
         if(nombre.trim().isEmpty()) throw new Exception("El nombre es obligatorio");
 
@@ -24,6 +38,12 @@ public class VentaControlador {
         }
     }
 
+    /**
+     * Quitar producto.
+     *
+     * @param indiceSeleccionado the indice seleccionado
+     * @throws Exception the exception
+     */
     public void quitarProducto(int indiceSeleccionado) throws Exception {
         if(indiceSeleccionado < 0) {
             throw new Exception("Seleccione un producto de la tabla para quitarlo");
@@ -31,6 +51,12 @@ public class VentaControlador {
         ventaModelo.quitarProducto(indiceSeleccionado);
     }
 
+    /**
+     * Finalizar venta.
+     *
+     * @param pagoString the pago string
+     * @throws Exception the exception
+     */
     public void finalizarVenta(String pagoString) throws Exception {
         try {
             double pago = Double.parseDouble(pagoString);

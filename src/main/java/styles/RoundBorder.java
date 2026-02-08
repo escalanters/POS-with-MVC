@@ -1,11 +1,19 @@
 package styles;
-
 import javax.swing.border.LineBorder;
 import java.awt.*;
 
+/**
+ * The type Round border.
+ */
 public class RoundBorder extends LineBorder {
     private final int radio;
 
+    /**
+     * Instantiates a new Round border.
+     *
+     * @param radio the radio
+     * @param color the color
+     */
     public RoundBorder(int radio, Color color) {
         super(color, 1, true);
         this.radio = radio;

@@ -1,17 +1,14 @@
 package styles;
-
-import styles.FontUtil;
-import styles.RoundBorder;
-
 import javax.swing.*;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
+/**
+ * The type Txt field ph.
+ */
 public class TxtFieldPh extends JTextField {
     private String txtPlaceholder;
     private int limit;
@@ -20,6 +17,15 @@ public class TxtFieldPh extends JTextField {
     private int fontSize;
     private int cornerRadius;
 
+    /**
+     * Instantiates a new Txt field ph.
+     *
+     * @param txtPlaceholder the txt placeholder
+     * @param width          the width
+     * @param height         the height
+     * @param fontSize       the font size
+     * @param cornerRadius   the corner radius
+     */
     public TxtFieldPh(String txtPlaceholder, int width, int height, int fontSize, int cornerRadius) {
         this.txtPlaceholder = txtPlaceholder;
         this.width = width;
