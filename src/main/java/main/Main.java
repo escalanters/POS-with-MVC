@@ -1,6 +1,7 @@
 package main;
 
 import controller.VentaControlador;
+import interfaces.IVentaModelo;
 import model.VentaModelo;
 import view.VentaVista;
 
@@ -11,6 +12,5 @@ public class Main {
         VentaVista vista = new VentaVista(modelo,controlador);
         modelo.agregarObservador(vista);
         vista.setVisible(true);
-
     }
 }
