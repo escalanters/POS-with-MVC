@@ -22,13 +22,13 @@ public class Style {
      */
     public static final Color COLOR_BTN_HOVER = new Color(80, 144, 248);
     /**
-     * The constant COLOR_BTN_BACK.
+     * The constant COLOR_BTN_CLEAR.
      */
-    public static final Color COLOR_BTN_BACK = new Color(44, 44, 44);
+    public static final Color COLOR_BTN_CLEAR = new Color(44, 44, 44);
     /**
-     * The constant COLOR_BTN_BACK_HOVER.
+     * The constant COLOR_BTN_CLEAR_HOVER.
      */
-    public static final Color COLOR_BTN_BACK_HOVER = new Color(60, 60, 60);
+    public static final Color COLOR_BTN_CLEAR_HOVER = new Color(60, 60, 60);
     /**
      * The constant COLOR_BTN_DELETE.
      */

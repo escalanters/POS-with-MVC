@@ -33,7 +33,6 @@ public class TxtFieldPh extends JTextField {
         this.fontSize = fontSize;
         this.cornerRadius = cornerRadius;
 
-        setFont(FontUtil.loadFont(fontSize, "Inter_Regular"));
         setPreferredSize(new Dimension(width, height));
         setBorder(new RoundBorder(this.cornerRadius, Color.white));
         setOpaque(false);
@@ -96,6 +95,7 @@ public class TxtFieldPh extends JTextField {
     protected void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D) g.create();
         g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
         g2d.setStroke(new BasicStroke(2));
 
         g2d.setColor(Color.WHITE);
@@ -104,7 +104,7 @@ public class TxtFieldPh extends JTextField {
         if ((getText().isEmpty())) {
 
             g2d.setColor(new Color(172, 172, 172));
-            g2d.setFont(FontUtil.loadFont(this.fontSize, "Inter_Regular"));
+            g2d.setFont(new Font("Segoe UI", Font.PLAIN, fontSize));
             FontMetrics fm = g2d.getFontMetrics();
             int padding = (getHeight() - fm.getHeight()) / 2 + fm.getAscent();
             g2d.drawString(this.txtPlaceholder, 15, padding);

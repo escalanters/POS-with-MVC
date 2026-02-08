@@ -23,7 +23,7 @@ public class VentaVista extends JFrame implements IObservador{
     private JLabel lblTotal, lblCambio;
     private JTable tablaProductos;
     private DefaultTableModel modeloTabla;
-    private Button btnAgregar, btnQuitar, btnFinalizar;
+    private Button btnAgregar, btnQuitar, btnLimpiar, btnFinalizar;
     private final VentaControlador controlador;
 
     /**
@@ -53,7 +53,7 @@ public class VentaVista extends JFrame implements IObservador{
         txtCantidad = new TxtFieldPh("Cantidad", 100, 40, 14, 20);
         txtPrecio = new TxtFieldPh("Precio Unitario", 120, 40, 14, 20);
 
-        btnAgregar = new Button("Agregar", 150, 40, 14, 20,
+        btnAgregar = new Button("Agregar", 90, 40, 14, 20,
                 Color.WHITE, Style.COLOR_BTN, Style.COLOR_BTN_HOVER);
 
         panelEntrada.add(txtNombre);
@@ -98,11 +98,15 @@ public class VentaVista extends JFrame implements IObservador{
         btnQuitar = new Button("Quitar Seleccionado", 180, 40, 14, 20,
                 Color.WHITE, Style.COLOR_BTN_DELETE, Style.COLOR_BTN_DELETE_HOVER);
 
+        btnLimpiar = new Button("Limpiar Selección", 160, 40, 14, 20,
+                Color.WHITE, Style.COLOR_BTN_CLEAR, Style.COLOR_BTN_CLEAR_HOVER);
+
         txtPago = new TxtFieldPh("Monto Pago", 120, 40, 14, 20);
 
-        btnFinalizar = new Button("FINALIZAR VENTA", 180, 40, 14, 20,
+        btnFinalizar = new Button("FINALIZAR VENTA", 160, 40, 14, 20,
                 Color.WHITE, Style.COLOR_BTN, Style.COLOR_BTN_HOVER);
 
+        panelControlesPago.add(btnLimpiar);
         panelControlesPago.add(btnQuitar);
         panelControlesPago.add(new JLabel("Pago:"));
         panelControlesPago.add(txtPago);
@@ -180,6 +184,14 @@ public class VentaVista extends JFrame implements IObservador{
             try {
                 int row = tablaProductos.getSelectedRow();
                 controlador.quitarProducto(row);
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
+        });
+
+        btnLimpiar.addActionListener(e -> {
+            try {
+                tablaProductos.clearSelection();
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
             }
