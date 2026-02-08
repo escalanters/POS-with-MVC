@@ -5,8 +5,6 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
 import java.awt.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 
 /**
  * The type Txt field ph.
@@ -41,32 +39,22 @@ public class TxtFieldPh extends JTextField {
         setOpaque(false);
     }
 
-    /**
-     * Instantiates a new Txt field ph.
-     *
-     * @param txtPlaceholder the txt placeholder
-     * @param limit          the limit
-     * @param width          the width
-     * @param height         the height
-     * @param fontSize       the font size
-     * @param cornerRadius   the corner radius
-     */
-    public TxtFieldPh(String txtPlaceholder, int limit, int width, int height, int fontSize, int cornerRadius) {
-        this.txtPlaceholder = txtPlaceholder;
-        this.limit = limit;
-        this.width = width;
-        this.height = height;
-        this.fontSize = fontSize;
-        this.cornerRadius = cornerRadius;
-
-        setFont(FontUtil.loadFont(fontSize, "Inter_Regular"));
-        setPreferredSize(new Dimension(width, height));
-        setBorder(new RoundBorder(this.cornerRadius, Color.white));
-        setOpaque(false);
-        if (limit > 0) {
-            setDocument(new LimitDocument());
-        }
-    }
+//    public TxtFieldPh(String txtPlaceholder, int limit, int width, int height, int fontSize, int cornerRadius) {
+//        this.txtPlaceholder = txtPlaceholder;
+//        this.limit = limit;
+//        this.width = width;
+//        this.height = height;
+//        this.fontSize = fontSize;
+//        this.cornerRadius = cornerRadius;
+//
+//        setFont(FontUtil.loadFont(fontSize, "Inter_Regular"));
+//        setPreferredSize(new Dimension(width, height));
+//        setBorder(new RoundBorder(this.cornerRadius, Color.white));
+//        setOpaque(false);
+//        if (limit > 0) {
+//            setDocument(new LimitDocument());
+//        }
+//    }
 
     @Override
     protected Document createDefaultModel() {
@@ -89,23 +77,20 @@ public class TxtFieldPh extends JTextField {
 
     }
 
-    /**
-     * Verify focus.
-     */
-    public void verifyFocus() {
-        FocusListener myFocusListener = new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent e) {
-                JTextField source = (JTextField) e.getSource();
-            }
-
-            @Override
-            public void focusLost(FocusEvent e) {
-                JTextField source = (JTextField) e.getSource();
-            }
-        };
-        addFocusListener(myFocusListener);
-    }
+//    public void verifyFocus() {
+//        FocusListener myFocusListener = new FocusListener() {
+//            @Override
+//            public void focusGained(FocusEvent e) {
+//                JTextField source = (JTextField) e.getSource();
+//            }
+//
+//            @Override
+//            public void focusLost(FocusEvent e) {
+//                JTextField source = (JTextField) e.getSource();
+//            }
+//        };
+//        addFocusListener(myFocusListener);
+//    }
 
     @Override
     protected void paintComponent(Graphics g) {
