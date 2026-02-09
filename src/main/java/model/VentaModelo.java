@@ -44,6 +44,19 @@ public class VentaModelo implements IVentaLectura,ISujeto, IVentaModelo {
             notificarObservadores();
         }
     }
+    
+    @Override
+    public void editarProducto(int indice, String nombre, int cantidad, double precio) throws Exception {
+        if(cantidad<=0){
+            throw new Exception("Tiene que existir por lo menos 1 producto");
+        }
+        if(precio<=0){
+            throw new Exception("El precio del producto no puede ser 0");
+        }
+        Producto producto = new Producto(nombre,cantidad,precio);
+        productos.set(indice, producto);
+        notificarObservadores();
+    }
 
     public void finalizarVenta(double pagoCliente) throws Exception{
         if(productos.isEmpty()){throw new Exception("El carrito esta vacio, favor de agregar productos");}
@@ -92,4 +105,6 @@ public class VentaModelo implements IVentaLectura,ISujeto, IVentaModelo {
             observador.actualizar(this);
         }
     }
+
+
 }

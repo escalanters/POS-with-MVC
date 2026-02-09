@@ -23,7 +23,7 @@ public class VentaVista extends JFrame implements IObservador{
     private JLabel lblTotal, lblCambio;
     private JTable tablaProductos;
     private DefaultTableModel modeloTabla;
-    private Button btnAgregar, btnQuitar, btnLimpiar, btnFinalizar;
+    private Button btnAgregar, btnQuitar, btnEditar, btnLimpiar, btnFinalizar;
     private final VentaControlador controlador;
 
     /**
@@ -97,6 +97,9 @@ public class VentaVista extends JFrame implements IObservador{
 
         btnQuitar = new Button("Quitar Seleccionado", 180, 40, 14, 20,
                 Color.WHITE, Style.COLOR_BTN_DELETE, Style.COLOR_BTN_DELETE_HOVER);
+        
+        btnEditar= new Button("Editar seleccionado", 160, 40, 12, 20,
+                Color.WHITE, Style.COLOR_BTN_DELETE, Style.COLOR_BTN_DELETE_HOVER);
 
         btnLimpiar = new Button("Limpiar Selección", 160, 40, 14, 20,
                 Color.WHITE, Style.COLOR_BTN_CLEAR, Style.COLOR_BTN_CLEAR_HOVER);
@@ -108,6 +111,7 @@ public class VentaVista extends JFrame implements IObservador{
 
         panelControlesPago.add(btnLimpiar);
         panelControlesPago.add(btnQuitar);
+        panelControlesPago.add(btnEditar);
         panelControlesPago.add(new JLabel("Pago:"));
         panelControlesPago.add(txtPago);
         panelControlesPago.add(btnFinalizar);
@@ -165,6 +169,7 @@ public class VentaVista extends JFrame implements IObservador{
     }
 
     private void configurarListeners() {
+        
         btnAgregar.addActionListener(e -> {
             try {
                 if(txtNombre.getText().isEmpty() || txtCantidad.getText().isEmpty() || txtPrecio.getText().isEmpty()){
@@ -186,6 +191,28 @@ public class VentaVista extends JFrame implements IObservador{
                 controlador.quitarProducto(row);
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
+        });
+        
+        btnEditar.addActionListener(e -> {
+           
+            int seleccionada= tablaProductos.getSelectedRow();
+            if (seleccionada != -1) {
+                String nombre= modeloTabla.getValueAt(seleccionada, 0).toString();
+                String cantidad= modeloTabla.getValueAt(seleccionada, 1).toString();
+                String precioUnitario= modeloTabla.getValueAt(seleccionada, 2).toString();
+
+                String nuevoNombre= JOptionPane.showInputDialog(this, "Editar nombre del producto:", nombre);
+                String nuevaCantidad= JOptionPane.showInputDialog(this, "Editar cantidad del producto:", cantidad);
+                String nuevoPrecioUnitario= JOptionPane.showInputDialog(this, "Editar precio unitario del producto:", precioUnitario);
+                try{
+                    controlador.editarProducto(seleccionada, nuevoNombre, nuevaCantidad, nuevoPrecioUnitario);
+                } catch(Exception ex){
+                    JOptionPane.showMessageDialog(this, ex.getMessage());
+                }
+
+            } else{
+                JOptionPane.showMessageDialog(this, "Seleccione una fila en la tabla para poder editarla");
             }
         });
 

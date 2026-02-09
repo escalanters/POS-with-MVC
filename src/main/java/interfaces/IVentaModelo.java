@@ -29,4 +29,8 @@ public interface IVentaModelo {
      * @param indice the indice
      */
     void quitarProducto(int indice);
+    
+    void editarProducto(int indice, String nombre, int cantidad, double precio) throws Exception;
+    
+    
 }

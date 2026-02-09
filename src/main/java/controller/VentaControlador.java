@@ -50,6 +50,19 @@ public class VentaControlador {
         }
         ventaModelo.quitarProducto(indiceSeleccionado);
     }
+    
+    public void editarProducto(int indiceSeleccionado, String nombre, String cantidadStr, String precioStr) throws Exception{
+        if(nombre.trim().isEmpty()) throw new Exception("El nombre es obligatorio");
+        if(cantidadStr.trim().isEmpty()) throw new Exception("La cantidad es obligatoria");
+        if(precioStr.trim().isEmpty()) throw new Exception("El precio unitario es obligatorio");
+        try{
+            int cantidad= Integer.parseInt(cantidadStr);
+            double precio= Double.parseDouble(precioStr);
+            ventaModelo.editarProducto(indiceSeleccionado, nombre, cantidad, precio);
+        } catch (NumberFormatException e) {
+            throw new Exception("La cantidad y el precio deben ser números validos");
+        }
+    }
 
     /**
      * Finalizar venta.
