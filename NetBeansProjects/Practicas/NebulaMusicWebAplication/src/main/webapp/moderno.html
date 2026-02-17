@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Moderno - Introducción</title>
+</head>
+<body>
+    <!-- Usar figcaption cuando la imagen necesita contexto -->
+    <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Fronalpstock_big.jpg" alt="Imagen de prueba" width="100%">
+        <figcaption>
+            Figura 1: Fotografia de prueba
+        </figcaption>
+    </figure>
+
+    <!-- Utiliza principalmente para imagenes reponsivas - Permite definir distitan versiones segun el tamaño de la pantalla -->
+    <picture>
+        <source srcset="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200" media="(min-width: 768px)">
+        <source srcset="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600" media="(max-width: 767px)">
+
+        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=600" alt="Imagen de prueba con source">
+    </picture>
+    
+    <!-- SVG es un vectorial (independientemente del tamaño nunca se pixea) -->
+    <svg>
+        <circle cx="60" cy="60" r="50" stroke="black" stroke-width="9" fill="lightblue" ></circle>
+    </svg>
+
+    <!-- datalist : listra una lista de sugerencias , te da ciertos valors que puedes poner en el input -->
+     <label>
+        Lenguaje Favorito
+        <input list="languages">
+     </label>
+
+     <datalist id="languages">
+        <option value="Java"></option>
+        <option value="JavaScript"></option>
+        <option value="Python"></option>
+        <option value="C#"></option>
+     </datalist>
+
+     <!-- Contenido desplegable -->
+     <details>
+        <summary>¿Qué es HTML semántico?</summary>
+        <p>
+            Es el uso de etiquetas que describen el significado del contenido y no solo su apariencia
+        </p>
+     </details>
+
+     <!-- Sirve para cargar videos -->
+     <video controls autoplay muted loop poster="">
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+
+        <track kind="subtitles"></track>
+     </video>
+
+     <audio src="https://www.w3schools.com/html/horse.mp3" controls>
+
+     </audio>
+
+     <iframe width="560" height="315" src="https://www.youtube.com/embed/3nYLTiY5skU" frameborder="0"></iframe>
+     <br>
+     
+     <button onclick="abrirModal()">Abrir mensjae</button>
+
+     <dialog id="miDialogo">
+        <p>Este es un dialogo HTML nativo</p>
+        <button onclick="cerrarModal()">Cerar</button>
+     </dialog>
+
+     <script>
+        function abrirModal(){
+            document.getElementById('miDialogo').showModal();
+        }
+
+        function cerrarModal(){
+            document.getElementById('miDialogo').close();
+        }
+     </script>
+</body>
+</html>
